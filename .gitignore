@@ -1,0 +1,18 @@
+# environments and caches
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# editor
+.vscode/
+
+# real flight data and analysis output (generated; can be large or private)
+/data/
+/results/
+
+# local session notes (superseded by README.md)
+CONTEXT.md
+
+# temp
+*.tmp

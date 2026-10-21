@@ -1,0 +1,21 @@
+Flights          : 1  (flight_001_20261021-173045.csv)
+Usable samples   : 92  (power -43.2 .. -13.7 dBFS)
+Estimate         : 20.5 m north, 13.0 m east of the takeoff pad
+Map position     : -35.363078, 149.165380
+Uncertainty      : 90% inside 3.6 m of that point
+Fitted offset    : -0.2 dB (large = reference power is off; harmless for position)
+Loudest reading  : 30.0 N, 15.2 E  (naive baseline)
+Beacon (phone)   : -35.363042, 149.165370  -> 24.5 N, 12.0 E
+ERROR            : 4.2 m  (loudest-reading baseline: 6.4 m)
+                   includes phone GPS (~3-5 m) and drone GPS (~1-2 m) error
+
+Refine mission   : 16 x 16 m box at N=20.5 E=13.0, east-west lanes @ 5 m alt, 4 lanes, 76 m of path
+Waypoints (lat, lon, alt above takeoff), in case QGC will not load the file:
+   1  -35.3631322  149.1652922  5 m
+   2  -35.3631322  149.1654685  5 m
+   3  -35.3630963  149.1654685  5 m
+   4  -35.3630963  149.1652922  5 m
+   5  -35.3630603  149.1652922  5 m
+   6  -35.3630603  149.1654685  5 m
+   7  -35.3630244  149.1654685  5 m
+   8  -35.3630244  149.1652922  5 m
