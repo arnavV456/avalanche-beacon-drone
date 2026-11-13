@@ -16,3 +16,9 @@ CONTEXT.md
 
 # temp
 *.tmp
+
+# dashboards embed real GPS positions
+/dashboards/
+
+# field photos/videos (large, contain people)
+/MEDIA/

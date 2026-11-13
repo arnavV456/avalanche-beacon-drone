@@ -1,0 +1,148 @@
+<!--
+  The words and pictures for the "The project" page of the dashboard.
+  Edit freely; then rebuild with:  python3 dashboard.py data/flight_*.csv
+  {{img:FILE NAME}} is replaced by the link to that photo in the MEDIA folder.
+  {{svg:search}} is replaced by a generated illustration.
+  Two parts: HERO (the banner at the very top) and ABOUT (the project tab).
+-->
+<!--HERO-->
+<section class="hero" style="--hero:url('{{img:WhatsApp Image 2026-10-25 at 13.32.39.jpeg}}')">
+  <div class="hero-in">
+    <div class="eyebrow light">Capstone project &middot; proof of concept</div>
+    <h1>Avalanche victim detection</h1>
+    <p class="hero-sub">A drone that listens for the radio beacon an avalanche victim carries, flies a search pattern over the ground, and works out where the signal is coming from.</p>
+    <div class="hero-chips">
+      <span>Field-tested with real flights</span>
+      <span>Drone &middot; radio receiver &middot; GPS</span>
+      <span>Real flights, real data</span>
+    </div>
+    <div class="hero-btns">
+      <a class="btn" href="#" onclick="show('ov');return false">See the flight data &rarr;</a>
+      <a class="btn ghost" href="#how" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'});return false">How it works &darr;</a>
+    </div>
+  </div>
+</section>
+<!--/HERO-->
+<!--ABOUT-->
+<div class="story">
+
+  <section class="sec">
+    <div class="eyebrow">The problem</div>
+    <h2>When an avalanche buries someone, every minute counts.</h2>
+    <p class="lede">People in avalanche terrain often carry a small radio beacon. If they are buried, rescuers sweep the slope with a receiver to find its signal. But searching a large, unstable slope on foot is slow, and it puts the rescuers at risk too.</p>
+    <p class="lede">A drone can cover the same ground much faster, from above, without putting anyone else in danger.</p>
+  </section>
+
+  <section class="sec">
+    <div class="eyebrow">Our idea</div>
+    <h2>Give the drone a radio receiver.</h2>
+    <p class="lede">The beacon sends out a steady radio signal. The closer you are, the stronger you hear it. If a drone measures that strength at lots of places it knows the position of, a computer can work backwards to find the most likely source.</p>
+    <div class="cols">
+      <div class="icard">
+        <div class="icon"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="2.2" fill="currentColor"/><path d="M7.5 7.5a6.4 6.4 0 0 0 0 9M16.5 7.5a6.4 6.4 0 0 1 0 9M4.5 4.5a10.6 10.6 0 0 0 0 15M19.5 4.5a10.6 10.6 0 0 1 0 15"/></svg></div>
+        <h3>The beacon</h3>
+        <p>A small transmitter that sends out a steady tone. The person at risk carries it. In our tests, a laptop with a radio plays this role.</p>
+      </div>
+      <div class="icard">
+        <div class="icon"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="5" r="2.4"/><circle cx="19" cy="5" r="2.4"/><circle cx="5" cy="19" r="2.4"/><circle cx="19" cy="19" r="2.4"/><path d="M7 7l3.2 3.2M17 7l-3.2 3.2M7 17l3.2-3.2M17 17l-3.2-3.2"/><rect x="9.6" y="9.6" width="4.8" height="4.8" rx="1"/></svg></div>
+        <h3>The drone</h3>
+        <p>Flies a planned search pattern on autopilot. It carries a radio receiver, a GPS, and a small computer that records everything it hears.</p>
+      </div>
+      <div class="icard">
+        <div class="icon"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18M6 20v-6M11 20V8M16 20v-9M21 20V5"/></svg></div>
+        <h3>The software</h3>
+        <p>Matches every signal reading to the place it was taken, then draws a probability map of where the beacon most likely is.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="how">
+    <div class="eyebrow">How a search works</div>
+    <h2>Fly a grid, listen, and narrow it down.</h2>
+    <div class="ill-wrap">{{svg:search}}</div>
+    <p class="figcap">An illustration of the idea (not real data): the drone flies back and forth over the search area, and the signal it hears (darker dots) gets stronger as it passes near the beacon. The software turns those readings into a map of where the beacon probably is.</p>
+    <div class="steps">
+      <div class="step"><span class="n">1</span><h3>Plan</h3><p>Draw a "lawnmower" search grid over the area in the flight-planning software.</p></div>
+      <div class="step"><span class="n">2</span><h3>Fly</h3><p>The drone follows the grid on autopilot, low and steady over the ground.</p></div>
+      <div class="step"><span class="n">3</span><h3>Listen</h3><p>The receiver measures the beacon's signal about five times a second. The GPS notes where the drone was for each reading.</p></div>
+      <div class="step"><span class="n">4</span><h3>Estimate</h3><p>The software tries thousands of possible beacon positions and scores how well each one explains the readings. The result is a probability map.</p></div>
+      <div class="step"><span class="n">5</span><h3>Zoom in</h3><p>Fly a smaller, tighter pattern over the most likely area, and repeat for a sharper answer.</p></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="eyebrow">Meet the drone</div>
+    <h2>A small quadcopter carrying a listening kit.</h2>
+    <div class="split">
+      <div class="photos two">
+        <figure><img loading="lazy" src="{{img:WhatsApp Image 2026-10-25 at 13.41.19 (1).jpeg}}" alt="Close-up of the drone held by hand, showing the GPS on top and the electronics underneath"><figcaption>The GPS sits on top; the computer and radio receiver are mounted underneath.</figcaption></figure>
+        <figure><img loading="lazy" src="{{img:WhatsApp Image 2026-10-25 at 13.41.47 (1).jpeg}}" alt="The drone seen from above, on the grass"><figcaption>From above: four arms, one on-board listening kit.</figcaption></figure>
+      </div>
+      <div class="parts">
+        <div class="part"><b>Autopilot</b><span>A Pixhawk flight controller running ArduCopter keeps the drone steady and follows the planned route.</span></div>
+        <div class="part"><b>GPS</b><span>Tells the drone, and our software, exactly where it is.</span></div>
+        <div class="part"><b>Radio receiver</b><span>An ADALM-Pluto software-defined radio with an antenna. It measures how strong the beacon's signal is.</span></div>
+        <div class="part"><b>On-board computer</b><span>A Raspberry Pi. It records every signal reading with the drone's position. It only listens; the autopilot does the flying.</span></div>
+        <div class="part"><b>Ground station</b><span>A laptop running QGroundControl, used to plan the search grid and watch the flight.</span></div>
+      </div>
+    </div>
+    <div class="ill-wrap sys">
+      <svg viewBox="0 0 900 250" role="img" aria-label="Diagram: the beacon sends a radio signal to the drone, the drone's readings go to the analysis software">
+        <rect class="box" x="14" y="55" width="220" height="140" rx="16"/>
+        <text class="t h" x="124" y="100" text-anchor="middle">The beacon</text>
+        <text class="m" x="124" y="128" text-anchor="middle">A transmitter sending</text>
+        <text class="m" x="124" y="148" text-anchor="middle">out a steady signal</text>
+        <g class="wave"><path d="M262 105q20 20 0 40"/><path d="M280 92q32 33 0 66"/><path d="M298 80q44 45 0 90"/></g>
+        <text class="m" x="283" y="200" text-anchor="middle" font-size="13">radio signal</text>
+        <rect class="box strong" x="340" y="22" width="290" height="206" rx="16"/>
+        <text class="t h" x="485" y="54" text-anchor="middle">The drone</text>
+        <rect class="pill" x="362" y="72" width="246" height="38" rx="10"/><text class="t" x="485" y="96" text-anchor="middle">Radio receiver (ADALM-Pluto)</text>
+        <rect class="pill" x="362" y="120" width="246" height="38" rx="10"/><text class="t" x="485" y="144" text-anchor="middle">Computer (Raspberry Pi)</text>
+        <rect class="pill" x="362" y="168" width="246" height="38" rx="10"/><text class="t" x="485" y="192" text-anchor="middle">Autopilot + GPS (Pixhawk)</text>
+        <path class="arrow" d="M640 125h58"/><path class="arrowhead" d="M692 118l10 7-10 7"/>
+        <text class="m" x="669" y="104" text-anchor="middle" font-size="13">readings</text>
+        <text class="m" x="669" y="150" text-anchor="middle" font-size="13">+ GPS</text>
+        <rect class="box" x="706" y="55" width="180" height="140" rx="16"/>
+        <text class="t h" x="796" y="100" text-anchor="middle">Analysis</text>
+        <text class="m" x="796" y="128" text-anchor="middle">A probability map of</text>
+        <text class="m" x="796" y="148" text-anchor="middle">where the beacon is</text>
+      </svg>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="eyebrow">The test day</div>
+    <h2>Out in an open field.</h2>
+    <p class="lede">We set up the beacon at a measured spot, planned the search in QGroundControl, flew it, and compared the software's answer with where the beacon really was. A tape measure marked out the exact positions.</p>
+    <div class="photos three">
+      <figure><img loading="lazy" src="{{img:WhatsApp Image 2026-10-25 at 13.13.54.jpeg}}" alt="QGroundControl showing a lawnmower search grid over the field"><figcaption>The search grid, planned in QGroundControl.</figcaption></figure>
+      <figure><img loading="lazy" src="{{img:WhatsApp Image 2026-10-25 at 13.33.06.jpeg}}" alt="QGroundControl showing a smaller, tighter pattern"><figcaption>A smaller, tighter pattern for a closer look.</figcaption></figure>
+      <figure><img loading="lazy" src="{{img:WhatsApp Image 2026-10-25 at 13.41.49.jpeg}}" alt="A laptop with a blue ADALM-Pluto radio next to a tape measure"><figcaption>The beacon side: a laptop with a radio, and a tape measure.</figcaption></figure>
+      <figure><img loading="lazy" src="{{img:WhatsApp Image 2026-10-25 at 13.32.40.jpeg}}" alt="The wide field with the laptop in the foreground and the drone in the distance"><figcaption>The test field.</figcaption></figure>
+      <figure><img loading="lazy" src="{{img:WhatsApp Image 2026-10-25 at 13.41.19.jpeg}}" alt="Side view of the drone showing the radio receiver mounted under the frame"><figcaption>The receiver (blue) hangs under the frame.</figcaption></figure>
+      <figure><img loading="lazy" src="{{img:WhatsApp Image 2026-10-25 at 13.39.52.jpeg}}" alt="The drone on the grass before a flight"><figcaption>Ready for a flight.</figcaption></figure>
+    </div>
+    <p class="more"><a href="#" onclick="show('ov');return false">Watch the flights with live graphs, and see all the photos &rarr;</a></p>
+  </section>
+
+  <section class="sec">
+    <div class="eyebrow">What we found</div>
+    <h2>It works end to end. Now we make it sharper.</h2>
+    <div class="stats">
+      <div class="stat"><b>11 m</b><span>In flight 005, one pass of the search grid placed the beacon about 11 metres from its true position.</span></div>
+      <div class="stat"><b>A clear peak</b><span>When the drone flew closest to the beacon in flight 005 (about 53 seconds in), the signal rose well above the background.</span></div>
+      <div class="stat"><b>1.6 m</b><span>In flight 006 the drone came down 1.6 metres from the beacon. That was a shorter, higher flight, so its position estimate was much rougher (about 17 m off).</span></div>
+    </div>
+    <div class="callout">
+      <b>What we've learned.</b> Real radio signals are messy. Readings jump between strong and weak even when the drone is hardly moving, so the software has to cope with a lot of noise. This is an early proof of concept from a small number of flights: the whole chain from planning to a map works, and the next job is making the estimate more precise.
+    </div>
+  </section>
+
+  <section class="sec last">
+    <div class="eyebrow">Built with</div>
+    <div class="tags"><span>ArduPilot / ArduCopter</span><span>QGroundControl</span><span>Pixhawk</span><span>Raspberry Pi</span><span>ADALM-Pluto SDR</span><span>Python</span><span>Plotly</span><span>Leaflet</span></div>
+    <p class="fine">An early prototype. All numbers on this site come from a small number of real test flights.</p>
+  </section>
+
+</div>
+<!--/ABOUT-->
